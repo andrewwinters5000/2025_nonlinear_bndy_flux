@@ -19,7 +19,7 @@ using `Trixi2Vtk.jl` with a command like
 trixi2vtk("out/solution_*.h5", output_directory="out")
 ```
 
-## Burgers' results
+## Burgers'
 
 The provided elixir for Trixi.jl uses the stable version. It can be run with
 ```julia
