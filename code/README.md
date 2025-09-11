@@ -103,7 +103,7 @@ trixi_include("code/elixir_shallowwater_geostrophic_adjustment_riemann_bcs.jl")
 
 The result from the nonlinearly stable outflow boundary result
 ```julia
-trixi_include("code/elixir_shallowwater_geostrophic_adjustment_nonlinear_bcs.jl",
+trixi_include("code/elixir_shallowwater_geostrophic_adjustment_nonlinear_bcs.jl")
 ```
 
 To obtain the result that using local Lax-Friedrichs together
