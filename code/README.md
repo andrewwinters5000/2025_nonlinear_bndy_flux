@@ -73,7 +73,7 @@ trixi_include("code/elixir_shallowwater_subcritical_mms.jl",
 For the subcritical manufactured solution the nonlinearly stable fluxes are the default.
 To generate this result use
 ```julia
-trixi_include("code/elixir_shallowwater_supercritical_mms.jl")
+trixi_include("code/elixir_shallowwater_supercritical_mms.jl");
 ```
 
 The local Lax-Friedrichs result comes from
@@ -82,7 +82,7 @@ trixi_include("code/elixir_shallowwater_supercritical_mms.jl",
               boundary_condition = Dict(:Right  => boundary_condition_slip_wall,
                                         :Left   => boundary_condition_slip_wall,
                                         :Bottom => boundary_condition_supercritical_inflow_llf,
-                                        :Top    => boundary_condition_supercritical_outflow_llf))
+                                        :Top    => boundary_condition_supercritical_outflow_llf));
 ```
 
 The HLL result comes from
@@ -91,19 +91,19 @@ trixi_include("code/elixir_shallowwater_subcritical_mms.jl",
               boundary_condition = Dict(:Right  => boundary_condition_slip_wall,
                                         :Left   => boundary_condition_slip_wall,
                                         :Bottom => boundary_condition_supercritical_inflow_hll,
-                                        :Top    => boundary_condition_supercritical_outflow_hll))
+                                        :Top    => boundary_condition_supercritical_outflow_hll));
 ```
 
 ## Geostrophic adjustment
 
 The result using the Riemann invariant boundary conditions from the linear analysis
 ```julia
-trixi_include("code/elixir_shallowwater_geostrophic_adjustment_riemann_bcs.jl")
+trixi_include("code/elixir_shallowwater_geostrophic_adjustment_riemann_bcs.jl");
 ```
 
 The result from the nonlinearly stable outflow boundary result
 ```julia
-trixi_include("code/elixir_shallowwater_geostrophic_adjustment_nonlinear_bcs.jl")
+trixi_include("code/elixir_shallowwater_geostrophic_adjustment_nonlinear_bcs.jl");
 ```
 
 To obtain the result that using local Lax-Friedrichs together
