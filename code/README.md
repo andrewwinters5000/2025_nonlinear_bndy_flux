@@ -16,7 +16,7 @@ One can reproduce this mesh using HOHQMesh.jl and the script `interactive_swe_ch
 All the two-dimensional simulation were visualized in ParaView where the HDF5 output files were converted
 using `Trixi2Vtk.jl` with a command like
 ```julia
-trixi2vtk("out/solution_*.h5", output_directory="out")
+trixi2vtk("out/solution_*.h5", output_directory="out", nvisnodes=8)
 ```
 
 ## Burgers'
@@ -45,7 +45,7 @@ One can use `plot(sol)` to obtain the figures in the manuscript.
 For the subcritical manufactured solution the nonlinearly stable fluxes are the default.
 To generate this result use
 ```julia
-trixi_include("code/elixir_shallowwater_subcritical_mms.jl");
+trixi_include("code/elixir_shallowwater_subcritical_mms.jl", tspan = (0.0, 4.1));
 ```
 
 The local Lax-Friedrichs result that crashes around t ≈ 4.1 uses
@@ -55,7 +55,8 @@ trixi_include("code/elixir_shallowwater_subcritical_mms.jl",
               boundary_condition = Dict(:Right  => boundary_condition_slip_wall,
                                         :Left   => boundary_condition_slip_wall,
                                         :Bottom => boundary_condition_subcritical_inflow_llf,
-                                        :Top    => boundary_condition_subcritical_outflow_llf));
+                                        :Top    => boundary_condition_subcritical_outflow_llf),
+                                        tspan = (0.0, 4.1));
 ```
 
 The HLL result runs through with internal dissipation via the command
@@ -65,7 +66,8 @@ trixi_include("code/elixir_shallowwater_subcritical_mms.jl",
               boundary_condition = Dict(:Right  => boundary_condition_slip_wall,
                                         :Left   => boundary_condition_slip_wall,
                                         :Bottom => boundary_condition_subcritical_inflow_hll,
-                                        :Top    => boundary_condition_subcritical_outflow_hll));
+                                        :Top    => boundary_condition_subcritical_outflow_hll),
+                                        tspan = (0.0, 4.1));
 ```
 
 ## Supercritical manufactured solution
@@ -73,7 +75,7 @@ trixi_include("code/elixir_shallowwater_subcritical_mms.jl",
 For the subcritical manufactured solution the nonlinearly stable fluxes are the default.
 To generate this result use
 ```julia
-trixi_include("code/elixir_shallowwater_supercritical_mms.jl");
+trixi_include("code/elixir_shallowwater_supercritical_mms.jl", tspan = (0.0, 6.0));
 ```
 
 The local Lax-Friedrichs result comes from
@@ -82,7 +84,8 @@ trixi_include("code/elixir_shallowwater_supercritical_mms.jl",
               boundary_condition = Dict(:Right  => boundary_condition_slip_wall,
                                         :Left   => boundary_condition_slip_wall,
                                         :Bottom => boundary_condition_supercritical_inflow_llf,
-                                        :Top    => boundary_condition_supercritical_outflow_llf));
+                                        :Top    => boundary_condition_supercritical_outflow_llf),
+                                        tspan = (0.0, 6.0));
 ```
 
 The HLL result comes from
@@ -91,7 +94,8 @@ trixi_include("code/elixir_shallowwater_supercritical_mms.jl",
               boundary_condition = Dict(:Right  => boundary_condition_slip_wall,
                                         :Left   => boundary_condition_slip_wall,
                                         :Bottom => boundary_condition_supercritical_inflow_hll,
-                                        :Top    => boundary_condition_supercritical_outflow_hll));
+                                        :Top    => boundary_condition_supercritical_outflow_hll),
+                                        tspan = (0.0, 6.0));
 ```
 
 ## Geostrophic adjustment
