@@ -45,7 +45,7 @@ function source_term_moving_blob(u, x, t, equations::ShallowWaterEquations2D)
 
     h0 = 0.6 # corresponding to a background Froude number ≈ 1.8
 
-    A0 = 1.0   # amplitude of perturbation to water height
+    A0 = 1.0    # amplitude of perturbation to water height
     sigma = 8   # sharpness of Gaussian blob
 
     # pi/4 Rotated blob center where the Cartesian center was [-2.0; 1.5]
