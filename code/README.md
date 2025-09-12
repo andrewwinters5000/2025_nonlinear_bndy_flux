@@ -87,7 +87,7 @@ trixi_include("code/elixir_shallowwater_supercritical_mms.jl",
 
 The HLL result comes from
 ```julia
-trixi_include("code/elixir_shallowwater_subcritical_mms.jl",
+trixi_include("code/elixir_shallowwater_supercritical_mms.jl",
               boundary_condition = Dict(:Right  => boundary_condition_slip_wall,
                                         :Left   => boundary_condition_slip_wall,
                                         :Bottom => boundary_condition_supercritical_inflow_hll,
