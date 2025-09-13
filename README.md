@@ -33,12 +33,11 @@ use the implementations provided here, please **also** cite this repository as
 
 ## Abstract
 
-We describe how provably stable nonlinear simultaneous approximation terms (SATs) that weakly impose boundary conditions can be reinterpreted in terms of a two-point numerical flux function.
-Initially, this analysis is done for the one-dimensional Burgers equation, as its simplicity illustrates the fundamental ideas.
-We then extend it into two-dimensional curvilinear coordinates with the shallow water equations.
-The resulting numerical flux function inherits the provable stability bound of the SATs for nonlinear problems.
-Additionally, this formulation can be used for any approximation strategy that uses a numerical flux to weakly impose boundary conditions, e.g. finite volume methods.
-We provide numerical studies to demonstrate the performance of the novel boundary flux functions in the context of high-order discontinuous Galerkin spectral element methods.
+We present a strategy to interpret nonlinear characteristic-type penalty terms as numerical flux functions that provide provable bounds for solutions of nonlinear hyperbolic problems with open boundaries.
+This interpretation is rooted in the nonlinear energy method, which has recently enabled a systematic design of characteristic-based penalty terms for the weak imposition of boundary conditions.
+The new boundary fluxes are directly compatible with high-order accurate split-form discontinuous Galerkin spectral element methods and guarantee that entropy is bounded solely by data.
+We derive nonlinearly stable inflow-outflow boundary fluxes for both the Burgers equation and the two-dimensional shallow water equations.
+Numerical experiments demonstrate that the new nonlinear fluxes do not fail in situations where  standard boundary treatments derived from linear analysis do.
 
 
 ## Numerical experiments
