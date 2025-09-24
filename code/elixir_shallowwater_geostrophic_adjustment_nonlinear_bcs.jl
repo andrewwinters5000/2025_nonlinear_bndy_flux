@@ -120,7 +120,7 @@ solver = DGSEM(polydeg = polydeg,
 coordinates_min = (-10.0, -10.0)
 coordinates_max = (10.0, 10.0)
 
-trees_per_dimension = (16, 16) # for polydeg 8; low res
+trees_per_dimension = (32, 32)
 mesh = P4estMesh(trees_per_dimension,
                  polydeg = 1, initial_refinement_level = 0,
                  coordinates_min = coordinates_min, coordinates_max = coordinates_max,
@@ -149,7 +149,7 @@ analysis_callback = AnalysisCallback(semi, interval = analysis_interval,
 
 alive_callback = AliveCallback(analysis_interval = analysis_interval)
 
-save_solution = SaveSolutionCallback(dt = 0.25,
+save_solution = SaveSolutionCallback(dt = 1.0,
                                      save_initial_solution = true,
                                      save_final_solution = true)
 
