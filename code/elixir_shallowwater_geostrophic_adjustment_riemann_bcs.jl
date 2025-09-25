@@ -96,7 +96,7 @@ boundary_conditions = (x_neg = boundary_condition_outflow_riemann_invariant,
 # Get the DG approximation space
 
 volume_flux = (flux_wintermeyer_etal, flux_nonconservative_wintermeyer_etal)
-surface_flux = (flux_lax_friedrichs, flux_nonconservative_wintermeyer_etal)
+surface_flux = (flux_wintermeyer_etal, flux_nonconservative_wintermeyer_etal)
 polydeg = 8
 solver = DGSEM(polydeg = polydeg,
                surface_flux = surface_flux,

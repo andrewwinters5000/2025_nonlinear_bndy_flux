@@ -35,9 +35,9 @@ use the implementations provided here, please **also** cite this repository as
 
 We present a strategy to interpret nonlinear characteristic-type penalty terms as numerical flux functions that provide provable bounds for solutions of nonlinear hyperbolic problems with open boundaries.
 This interpretation is rooted in the nonlinear energy method, which has recently enabled a systematic design of characteristic-based penalty terms for the weak imposition of boundary conditions.
-The new boundary fluxes are directly compatible with high-order accurate split-form discontinuous Galerkin spectral element methods and guarantee that entropy is bounded solely by data.
-We derive nonlinearly stable inflow-outflow boundary fluxes for both the Burgers equation and the two-dimensional shallow water equations.
-Numerical experiments demonstrate that the new nonlinear fluxes do not fail in situations where  standard boundary treatments derived from linear analysis do.
+The new boundary fluxes are directly compatible with high-order accurate split-form discontinuous Galerkin spectral element methods and guarantee that entropy is bounded solely by external data.
+We derive nonlinearly stable inflow-outflow boundary fluxes specifically for the Burgers equation and the two-dimensional shallow water equations.
+Numerical experiments demonstrate that the new nonlinear fluxes do not fail in situations where standard boundary treatments derived from linear analysis do.
 
 
 ## Numerical experiments
