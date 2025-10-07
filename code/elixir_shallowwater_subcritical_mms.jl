@@ -75,21 +75,21 @@ function source_term_moving_blob(u, x, t, equations::ShallowWaterEquations2D)
 end
 
 ###############################################################################
-# "standard" boundary condition routines from the linear analysis
-# that are not provably stable for the nonlinear problem.
+# "standard" boundary condition routines where the Riemann solver, given the
+# external and internal solution states, should extract the appropriate information
+# OBS! Not provably stable for the nonlinear problem.
 
-# Subcritical outflow boundary that come from Section 5.2 of the book from Vreugdenhil
+# Subcritical outflow boundary using LLF
 function boundary_condition_subcritical_outflow_llf(u_inner, normal_direction::AbstractVector,
                                                     x, t, surface_flux_functions,
                                                     equations::ShallowWaterEquations2D)
     _, nonconservative_flux_function = surface_flux_functions
-    # Velocity from inside, height from outside
+
+    # Get the external solution state
     u_boundary = initial_condition_moving_blob(x, t, equations)
-    v1_i, v2_i = Trixi.velocity(u_inner, equations)
-    u_ext = SVector(u_boundary[1], u_boundary[1] * v1_i, u_boundary[1] * v2_i, zero(eltype(u_inner)))
 
     # local Lax-Friedrichs solver to impose the outflow boundary state
-    flux = flux_lax_friedrichs(u_inner, u_ext, normal_direction, equations)
+    flux = flux_lax_friedrichs(u_inner, u_boundary, normal_direction, equations)
 
     noncons_flux = nonconservative_flux_function(u_inner, u_ext, normal_direction,
                                                  equations)
@@ -97,18 +97,17 @@ function boundary_condition_subcritical_outflow_llf(u_inner, normal_direction::A
     return flux, noncons_flux
 end
 
-# Subcritical outflow boundary that come from Section 5.2 of the book from Vreugdenhil
+# Subcritical outflow boundary using HLL
 function boundary_condition_subcritical_outflow_hll(u_inner, normal_direction::AbstractVector,
                                                     x, t, surface_flux_functions,
                                                     equations::ShallowWaterEquations2D)
     _, nonconservative_flux_function = surface_flux_functions
-    # Velocity from inside, height from outside
+
+    # Get the external solution state
     u_boundary = initial_condition_moving_blob(x, t, equations)
-    v1_i, v2_i = Trixi.velocity(u_inner, equations)
-    u_ext = SVector(u_boundary[1], u_boundary[1] * v1_i, u_boundary[1] * v2_i, zero(eltype(u_inner)))
 
     # Harten-Lax-van Leer (HLL) solver to impose the outflow boundary state
-    flux = flux_hll(u_inner, u_ext, normal_direction, equations)
+    flux = flux_hll(u_inner, u_boundary, normal_direction, equations)
 
     noncons_flux = nonconservative_flux_function(u_inner, u_ext, normal_direction,
                                                  equations)
@@ -116,19 +115,17 @@ function boundary_condition_subcritical_outflow_hll(u_inner, normal_direction::A
     return flux, noncons_flux
 end
 
-# Subcritical inflow boundary that come from Section 5.2 of the book from Vreugdenhil
-# but originally comes from the normal mode analysis of Oliger & Sundström.
+# Subcritical inflow boundary using LLF
 function boundary_condition_subcritical_inflow_llf(u_inner, normal_direction::AbstractVector,
                                                    x, t, surface_flux_functions,
                                                    equations::ShallowWaterEquations2D)
     _, nonconservative_flux_function = surface_flux_functions
-   # Velocity from outside, height from inside
+
+    # Get the external solution state
     u_boundary = initial_condition_moving_blob(x, t, equations)
-    v1_b, v2_b = Trixi.velocity(u_boundary, equations)
-    u_ext = SVector(u_inner[1], u_inner[1] * v1_b, u_inner[1] * v2_b, zero(eltype(u_inner)))
 
     # local Lax-Friedrichs solver to impose the inflow boundary state
-    flux = flux_lax_friedrichs(u_inner, u_ext, normal_direction, equations)
+    flux = flux_lax_friedrichs(u_inner, u_boundary, normal_direction, equations)
 
     noncons_flux = nonconservative_flux_function(u_inner, u_ext, normal_direction,
                                                  equations)
@@ -136,19 +133,17 @@ function boundary_condition_subcritical_inflow_llf(u_inner, normal_direction::Ab
     return flux, noncons_flux
 end
 
-# Subcritical inflow boundary that come from Section 5.2 of the book from Vreugdenhil
-# but originally comes from the normal mode analysis of Oliger & Sundström.
+# Subcritical inflow boundary using HLL
 function boundary_condition_subcritical_inflow_hll(u_inner, normal_direction::AbstractVector,
                                                    x, t, surface_flux_functions,
                                                    equations::ShallowWaterEquations2D)
     _, nonconservative_flux_function = surface_flux_functions
-   # Velocity from outside, height from inside
+
+    # Get the external solution state
     u_boundary = initial_condition_moving_blob(x, t, equations)
-    v1_b, v2_b = Trixi.velocity(u_boundary, equations)
-    u_ext = SVector(u_inner[1], u_inner[1] * v1_b, u_inner[1] * v2_b, zero(eltype(u_inner)))
 
     # Harten-Lax-van Leer (HLL) solver to impose the inflow boundary state
-    flux = flux_hll(u_inner, u_ext, normal_direction, equations)
+    flux = flux_hll(u_inner, u_boundary, normal_direction, equations)
 
     noncons_flux = nonconservative_flux_function(u_inner, u_ext, normal_direction,
                                                  equations)

@@ -50,37 +50,27 @@ One can use `plot(sol)` to obtain the figures in the manuscript.
 For the subcritical manufactured solution the nonlinearly stable fluxes are the default.
 To generate this result use
 ```julia
-trixi_include(joinpath("code", "elixir_shallowwater_subcritical_mms.jl"), tspan = (0.0, 4.1));
+trixi_include(joinpath("code", "elixir_shallowwater_subcritical_mms.jl"), tspan = (0.0, 6.0));
 ```
 
-The HLL result runs through without internal dissipation via the command
+The HLL flux runs through without internal dissipation via the command
 ```julia
 trixi_include(joinpath("code", "elixir_shallowwater_subcritical_mms.jl"),
               boundary_condition = Dict(:Right  => boundary_condition_slip_wall,
                                         :Left   => boundary_condition_slip_wall,
                                         :Bottom => boundary_condition_subcritical_inflow_hll,
                                         :Top    => boundary_condition_subcritical_outflow_hll),
-                                        tspan = (0.0, 4.1));
+                                        tspan = (0.0, 6.0));
 ```
 
-The local Lax-Friedrichs result that crashes around t ≈ 1.7 uses
+The LLF flux runs through without internal dissipation via the command
 ```julia
 trixi_include(joinpath("code", "elixir_shallowwater_subcritical_mms.jl"),
-              boundary_condition = Dict(:Right  => boundary_condition_slip_wall,
-                                        :Left   => boundary_condition_slip_wall,
-                                        :Bottom => boundary_condition_subcritical_inflow_llf,
-                                        :Top    => boundary_condition_subcritical_outflow_llf));
-```
-
-The local Lax-Friedrichs result that crashes around t ≈ 4.1 uses
-```julia
-trixi_include(joinpath("code", "elixir_shallowwater_subcritical_mms.jl"),
-              surface_flux = (flux_lax_friedrichs, flux_nonconservative_wintermeyer_etal),
               boundary_condition = Dict(:Right  => boundary_condition_slip_wall,
                                         :Left   => boundary_condition_slip_wall,
                                         :Bottom => boundary_condition_subcritical_inflow_llf,
                                         :Top    => boundary_condition_subcritical_outflow_llf),
-                                        tspan = (0.0, 4.1));
+                                        tspan = (0.0, 6.0));
 ```
 
 ## Supercritical manufactured solution
@@ -123,7 +113,6 @@ that crashes at t ≈ 19.5
 ```julia
 trixi_include(joinpath("code", "elixir_shallowwater_geostrophic_adjustment_riemann_bcs.jl"));
 ```
-
 
 To obtain the result that runs through to the final time using local Lax-Friedrichs together
 with Riemann invariant boundary conditions
