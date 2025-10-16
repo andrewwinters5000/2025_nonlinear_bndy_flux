@@ -19,8 +19,8 @@ files were converted using `Trixi2Vtk.jl` with the command
 ```julia
 trixi2vtk(joinpath("out", "solution_*.h5"), output_directory="out", nvisnodes=8)
 ```
-The ParaView state files for the channel flow figures is available in `mms_figures.pvsm`
-and the plots of the geostrophic adjustment in `geostrophic_figures.pvsm`.
+The ParaView state file for the channel flow figures is available in `mms_figures.pvsm`
+and the state file for the geostrophic adjustment figures in `geostrophic_figures.pvsm`.
 
 ## Burgers'
 
