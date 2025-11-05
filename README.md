@@ -33,10 +33,12 @@ use the implementations provided here, please **also** cite this repository as
 
 ## Abstract
 
-We present a strategy for interpreting nonlinear, characteristic-type penalty terms as numerical flux functions that provide provable bounds for solutions to nonlinear hyperbolic initial boundary value problems with open boundaries.
+We present a strategy for interpreting nonlinear, characteristic-type penalty terms as numerical boundary flux functions that provide provable bounds for solutions to nonlinear hyperbolic initial boundary value problems with open boundaries.
 This approach is enabled by recent work that found how to express the entropy flux as a quadratic form defined by a symmetric boundary matrix.
-The matrix formulation provides additional information to systematically design characteristic-based penalty terms for the weak enforcement of boundary conditions.
-The new boundary fluxes are directly compatible with high-order accurate split form discontinuous Galerkin spectral element and similar methods and guarantee that the solution is entropy stable and bounded solely by external data.
+The matrix formulation provides additional information for how to systematically design characteristic-based penalty terms for the weak enforcement of boundary conditions.
+A special decomposition of the boundary matrix is required to define an appropriate set of characteristic-type variables.
+The new boundary fluxes are directly compatible with high-order accurate split form discontinuous Galerkin spectral element and similar methods and guarantee that
+the solution is entropy stable and bounded solely by external data.
 We derive inflow-outflow boundary fluxes specifically for the Burgers equation and the two-dimensional shallow water equations, which are also energy stable.
 Numerical experiments demonstrate that the new nonlinear fluxes do not fail in situations where standard boundary treatments based on linear analysis do.
 

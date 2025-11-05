@@ -103,7 +103,7 @@ trixi_include(joinpath("code", "elixir_shallowwater_supercritical_mms.jl"),
 
 ## Geostrophic adjustment
 
-The result from the nonlinearly stable outflow boundary result
+The result from the nonlinearly stable outflow boundary
 ```julia
 trixi_include(joinpath("code", "elixir_shallowwater_geostrophic_adjustment_nonlinear_bcs.jl"));
 ```
