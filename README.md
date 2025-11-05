@@ -1,7 +1,7 @@
 # Numerical flux functions that give provable bounds for nonlinear initial boundary value problems with open boundaries
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-success.svg)](https://opensource.org/licenses/MIT)
-[![DOI](https://zenodo.org/badge/DOI/TODO/zenodo.TODO.svg)](https://doi.org/TODO/zenodo.TODO)
+[![DOI](https://zenodo.org/badge/1055028019.svg)](https://doi.org/10.5281/zenodo.17533030)
 
 
 This repository contains information and code to reproduce the results presented in the
@@ -27,7 +27,7 @@ use the implementations provided here, please **also** cite this repository as
   author={Winters, Andrew R and Kopriva, David A and Nordström, Jan},
   year={2025},
   howpublished={\url{https://github.com/andrewwinters5000/2025_nonlinear_bndy_flux}},
-  doi={TODO/zenodo.TODO}
+  doi={https://doi.org/10.5281/zenodo.17533030}
 }
 ```
 
