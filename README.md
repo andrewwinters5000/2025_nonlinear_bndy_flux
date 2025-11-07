@@ -11,8 +11,8 @@ article
   title={Numerical flux functions that give provable bounds for nonlinear initial boundary value problems with open boundaries},
   author={Winters, Andrew R and Kopriva, David A and Nordström, Jan},
   year={2025},
-  month={09},
-  eprint={TODO},
+  month={11},
+  eprint={2511.04197},
   eprinttype={arxiv},
   eprintclass={math.NA}
 }
